@@ -1,0 +1,36 @@
+package module6;
+
+// Prints first n Fibonacci numbers
+
+public class QT 
+{
+	static int length = 3;
+	
+	public static void main(String[] args) 
+	{
+		fib(length);
+	}
+	
+	public static void fib(int n)
+	{
+		Queue q = new Queue();
+		q.enqueue(0);
+		System.out.println("Enqueue first: " + q);
+		q.enqueue(1);
+		System.out.println("Enqueue next: " + q);
+		
+		for (int i = 0; i < n; i++) 
+		{
+			// Remove first number in from the queue and assign to a (a = 0)
+			int a = q.dequeue(); 	// 0
+			System.out.print("i" + i + ": " + q);
+			// Remove second number in from the queue and assign to b (b = 1)
+			int b = q.dequeue();	// 1
+			// Add b to the queue; queue = 1
+			q.enqueue(b);			// 1
+			// Add a + b to the queue; queue = 1, 2 (1 + 1)
+			q.enqueue(a + b);		// 1
+			System.out.println(a + " ");
+		}
+	}  
+}
