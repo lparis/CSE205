@@ -1,0 +1,83 @@
+package module4;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class RecursiveBinarySearch 
+{
+	static Scanner in = new Scanner(System.in);
+
+	public static void main(String[] args) 
+	{
+		ArrayList<Integer> list = new ArrayList<>();
+		list = createArrayListInt();
+		
+		printArrayListInt(list);
+		
+		int key = getKey();
+		
+		int result = recursiveBinarySearch(list, key, 0, list.size() - 1);
+		
+		if (result == -1)
+		{
+			System.out.println(result + "Key " + key + " not found");
+		}
+		else
+		{
+			System.out.println(result + "Key " + key + "found at index " + list.indexOf(in));
+		}
+	}
+	
+	public static int recursiveBinarySearch(ArrayList<Integer> pList, int pKey, int pLow, int pHigh)
+	{
+		if (pLow > pHigh)
+		{
+			return -1;
+		}
+		
+		int middle = (pLow + pHigh) / 2;
+		
+		if (pKey == pList.get(middle))
+		{
+			return middle;
+		}
+		else if (pKey < pList.get(middle))
+		{
+			return recursiveBinarySearch(pList, pKey, pLow, middle - 1);
+		}
+		else
+		{
+			return recursiveBinarySearch(pList, pKey, middle + 1, pHigh);
+		}
+	}
+	
+	public static ArrayList<Integer> createArrayListInt()
+	{
+		ArrayList<Integer> arrayListInt = new ArrayList<>();
+		arrayListInt.add(3);
+		arrayListInt.add(7);
+		arrayListInt.add(9);
+		arrayListInt.add(11);
+		arrayListInt.add(13);
+		arrayListInt.add(17);
+		arrayListInt.add(19);
+		arrayListInt.add(23);
+		arrayListInt.add(29);
+		arrayListInt.add(31);
+		arrayListInt.add(37);
+		return arrayListInt;
+	}
+	
+	public static void printArrayListInt(ArrayList<Integer> aList)
+	{
+		System.out.println(aList);
+	}
+	
+	public static int getKey()
+	{
+		System.out.print("Enter a key: ");
+		int aKey = in.nextInt();
+		return aKey;
+	}
+}
+	

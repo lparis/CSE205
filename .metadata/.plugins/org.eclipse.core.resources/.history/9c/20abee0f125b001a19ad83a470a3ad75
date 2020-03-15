@@ -1,0 +1,18 @@
+package prjct4;
+
+public abstract class BinaryOperator extends Operator 
+{
+    public BinaryOperator() 
+    {
+    	// Empty constructor
+    }
+
+    public abstract Operand evaluate(Operand pLhsOperand, Operand pRhsOperand);
+
+    @Override
+    public boolean isBinaryOperator() 
+    {
+        return true;
+    }
+
+}
